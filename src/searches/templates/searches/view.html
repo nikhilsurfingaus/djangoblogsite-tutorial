@@ -1,0 +1,18 @@
+{% extends 'base.html' %} {% block content %}
+<div class="row">
+    <div class="col-12 col-8 mx-auto">
+        <p class="lead">
+            {% if query %} You Searches For {{ query }} {% else %}
+            <form class="d-flex" action='/search/'>
+                <input class="form-control me-2" type="search" placeholder="Search" name='q' aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            {% endif %}
+
+            {% for blog_item in blog_list %}
+                {% include 'blog/list-inline.html' with blog_post=blog_item truncate=True detail=False %}
+            {% endfor %}
+        </p>
+    </div>
+</div>
+{% endblock %}
